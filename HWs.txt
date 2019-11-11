@@ -1,0 +1,23 @@
+HW1
+1 a.top-navigation__item-link  
+//a[@class="top-navigation__item-link"]    
+
+2. //div[@class="ng-binding" and contains(text(),"1")]/../preceding-sibling::div ?
+
+3. .news-page-item__title
+//*[@class="news-page-item__title"]  
+
+4. //*[@class="search-result__item-name" and contains(text(),"Automation")]
+5. //*[@class="events-viewer__date" and contains(text(),"NOVEMBER")]/following-sibling::div/a
+
+HW2
+1. //a[contains(text(), "USA")]/../../td[1]
+
+2. img[src*="America logo"]
+//img[contains(@src,"America logo")]
+
+3. //span[contains(text(), "2")]/following-sibling::span
+
+4. //h3[contains(text(), "Languages")]/../div/ul/li/a
+
+5. //h3[contains(text(), "Tools")]/../div/ul/li/a
