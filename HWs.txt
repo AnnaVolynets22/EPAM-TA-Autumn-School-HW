@@ -2,7 +2,7 @@ HW1
 1 a.top-navigation__item-link  
 //a[@class="top-navigation__item-link"]    
 
-2. //div[@class="ng-binding" and contains(text(),"1")]/../preceding-sibling::div ?
+2. //div[@class="ng-binding" and contains(text(),"1")]/../preceding-sibling::div
 
 3. .news-page-item__title
 //*[@class="news-page-item__title"]  
