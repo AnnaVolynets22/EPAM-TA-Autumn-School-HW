@@ -167,9 +167,10 @@ public class HardCodedTests {
         
 	}
 	
-	@Test(enabled=false, description = "Verify 'Trainings' search works properly with searching in 'Locations'")
+    @Test(enabled=true, description = "Verify 'Trainings' search works properly with searching in 'Locations'")
     public void verifyTrainingsSearchWorksProperlyForLocations() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); //DOWNLOAD DRIVER !
+        WebDriver driver =new ChromeDriver();
         WebDriverWait wait=new WebDriverWait(driver, 20);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -190,25 +191,25 @@ public class HardCodedTests {
         WebElement byLocationButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[contains(text(),'By locations')]")));
         byLocationButton.click();
-        
-        WebElement locationsSearchInput = driver
-                .findElement(By.xpath("//input[@name='training-filter-input']"));
-        locationsSearchInput.sendKeys("Lviv");
-        //something wrong here, shoudl be fixed later
-        WebElement lvivCheckbox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//label[contains(.,'Lviv')]//span")));
-        lvivCheckbox.click();
 
-        WebElement collapseLocationsArrow = driver.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
-        collapseLocationsArrow.click();
-        
-        List<WebElement> locationsSearchResultsList = driver.
-                findElements(By.xpath("//div[@class='training-list__container training-list__desktop']//a"));
-        locationsSearchResultsList.forEach(element-> Assert.assertTrue(element.getText().contains("Lviv"),
-                String.format("Element %s does not contain 'Lviv' word.",element)));
+        WebElement country = driver
+                .findElement(By.xpath("//li/div[contains(text(),\"Ukraine\")]"));
+        country.click();
+
+        WebElement javaCheckbox = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//label[contains(.,'Lviv')]//span")));
+        javaCheckbox.click();
+
+        WebElement collapseSkillsArrow = driver.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
+        collapseSkillsArrow.click();
+
+        List<WebElement> skillsSearchResultsList = driver.
+                findElements(By.cssSelector(".training-item__location ng-binding:before"));
+        skillsSearchResultsList.forEach(element->System.out.println(element.getText()));
+        skillsSearchResultsList.forEach(element-> Assert.assertEquals(element.getText(),"Lviv, Ukraine"));
         
        
         driver.quit();
 
-            }
+      }
 }
