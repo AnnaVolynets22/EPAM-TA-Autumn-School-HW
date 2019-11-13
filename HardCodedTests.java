@@ -205,10 +205,8 @@ public class HardCodedTests {
 
         List<WebElement> skillsSearchResultsList = driver.
                 findElements(By.cssSelector(".training-item__location ng-binding:before"));
-        skillsSearchResultsList.forEach(element->System.out.println(element.getText()));
         skillsSearchResultsList.forEach(element-> Assert.assertEquals(element.getText(),"Lviv, Ukraine"));
         
-       
         driver.quit();
 
       }
