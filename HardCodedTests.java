@@ -14,10 +14,10 @@ import java.util.concurrent.TimeUnit;
 
 public class HardCodedTests {
 	
-	@Test(enabled=true, description = "Verify login with appropriate credentials.")
+   @Test(enabled=true, description = "Verify login with appropriate credentials.")
     public void verifyLoginWithAppropriateCredentials() {
 		
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); //DOWNLOAD DRIVER !
         WebDriver driver =new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -31,16 +31,16 @@ public class HardCodedTests {
         passwordInput.sendKeys("ivanhorintestPassword");
         WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
         signIn.click();
-        Assert.assertFalse(driver.findElements(By.className("user-info__name")).isEmpty());
+        Assert.assertFalse(driver.findElements(By.className("user-info__name")).isEmpty(), "Login fails.");
         
         driver.quit();
         
 	}
 	
-	@Test(enabled=true, description = "Verify login with incorrect credentials.")
+    @Test(enabled=true, description = "Verify login with incorrect credentials.")
     public void verifyLoginWithIncorrectCredentials() {
 		
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); //DOWNLOAD DRIVER !
         WebDriver driver =new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -55,11 +55,8 @@ public class HardCodedTests {
         WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
         signIn.click();
         
-        try {
-        driver.findElements(By.className("user-info__name"));}
-        catch(Throwable e){
-        	System.out.println("Login fail.");
-        }
+        WebElement errorMessage = driver.findElement(By.xpath("//div[@class=\"popup__error-message ng-binding\"]"));
+        Assert.assertTrue(errorMessage.isDisplayed(), "Login is successful with incorrect credentials.");
         driver.quit();
         
 	}
@@ -108,7 +105,7 @@ public class HardCodedTests {
         WebElement closeIcon = driver.findElement(By.className("filter-field__input-item-close-icon"));
         closeIcon.click();
         
-        //Perform search for ‘DATA’ search term.
+        //Perform search for â€˜DATAâ€™ search term.
 
         skillsSearchInput.sendKeys("Data");
 
@@ -130,7 +127,7 @@ public class HardCodedTests {
         //ADD OTHER STEPS
     }
 	
-	@Test(enabled=true, description = "Verify ‘News’ Page and Materials section")
+	@Test(enabled=true, description = "Verify â€˜Newsâ€™ Page and Materials section")
     public void verifyNewsPageAndMaterialsSection() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
         WebDriver driver =new ChromeDriver();
