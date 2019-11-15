@@ -37,7 +37,7 @@ public class HardCodedTests {
         
 	}
 	
-    @Test(enabled=true, description = "Verify login with incorrect credentials.")
+   @Test(enabled=true, description = "Verify login with incorrect credentials.")
     public void verifyLoginWithIncorrectCredentials() {
 		
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); //DOWNLOAD DRIVER !
@@ -60,74 +60,80 @@ public class HardCodedTests {
         driver.quit();
         
 	}
+	@Test(enabled = true, description = "Verify 'Trainings' search works properly with searching in 'Skills'", expectedExceptions = NoSuchElementException.class)
+	public void verifyTrainingsSearchWorksProperlyForSkills() {
+	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
+	WebDriver driver = new ChromeDriver();
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.get("https://training.by/#/Home");
+
+	WebElement signInButton = driver.findElement(By.xpath("//p[@class='header-auth__signin']//span"));
+	signInButton.click();
+	WebElement mailInput = driver.findElement(By.id("signInEmail"));
+	mailInput.sendKeys("ivanhorintest@gmail.com");
+	WebElement passwordInput = driver.findElement(By.id("signInPassword"));
+	passwordInput.sendKeys("ivanhorintestPassword");
+	WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
+	signIn.click();
+	WebElement expandSkillsArrow = wait
+			.until(ExpectedConditions.visibilityOfElementLocated(By.className("filter-toggle__arrow-icon")));
+	expandSkillsArrow.click();
+
+	WebElement bySkillsButton = wait
+			.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'By skills')]")));
+	bySkillsButton.click();
+
+	WebElement skillsSearchInput = driver.findElement(By.xpath("//input[@name='training-filter-input']"));
+	skillsSearchInput.sendKeys("Java");
+
+	WebElement javaCheckbox = wait
+			.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(.,'Java')]//span")));
+	javaCheckbox.click();
+
+	WebElement collapseSkillsArrow = driver
+			.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
+	collapseSkillsArrow.click();
+
+	List<WebElement> skillsSearchResultsList = driver
+			.findElements(By.xpath("//div[@class='training-list__container training-list__desktop']//a"));
+	skillsSearchResultsList.forEach(element -> Assert.assertTrue(element.getText().toLowerCase().contains("java"),
+			String.format("Element %s does not contain 'Java' word.", element)));
+
+	WebElement closeIcon = driver.findElement(By.className("filter-field__input-item-close-icon"));
+	closeIcon.click();
+
+	// Perform search for ‘DATA’ search term.
+	collapseSkillsArrow.click();
+	skillsSearchInput.sendKeys("Data");
+
+	WebElement dataCheckbox = wait
+			.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(.,'Data')]//span")));
+	dataCheckbox.click();
+
+	WebElement dataCollapseSkillsArrow = driver
+			.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
+	dataCollapseSkillsArrow.click();
+
+	List<WebElement> dskillsSearchResultsList = driver
+			.findElements(By.xpath("//label[@class='training-list__container training-list__desktop']//a"));
+	dskillsSearchResultsList.forEach(element -> Assert.assertTrue(element.getText().toLowerCase().contains("data"),
+			String.format("Element %s does not contain 'data' word.", element)));
+
+	// Perform search for ‘Pascal’ search term.
+	collapseSkillsArrow.click();
+	skillsSearchInput.sendKeys("Pascal");
+
+	Assert.assertFalse(driver.findElement(By.xpath("//label[contains(.,'pascal')]//span")).isSelected());
+		
+	driver.quit();
+
+	}
+
+
 	
-	@Test(enabled=true, description = "Verify 'Trainings' search works properly with searching in 'Skills'")
-    public void verifyTrainingsSearchWorksProperlyForSkills() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
-        WebDriver driver =new ChromeDriver();
-        WebDriverWait wait=new WebDriverWait(driver, 20);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://training.by/#/Home");
-
-        WebElement signInButton = driver.findElement(By.xpath("//p[@class='header-auth__signin']//span"));
-        signInButton.click();
-        WebElement mailInput = driver.findElement(By.id("signInEmail"));
-        mailInput.sendKeys("ivanhorintest@gmail.com");
-        WebElement passwordInput = driver.findElement(By.id("signInPassword"));
-        passwordInput.sendKeys("ivanhorintestPassword");
-        WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
-        signIn.click();
-        WebElement expandSkillsArrow = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.className("filter-toggle__arrow-icon")));
-        expandSkillsArrow.click();
-
-        WebElement bySkillsButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(text(),'By skills')]")));
-        bySkillsButton.click();
-
-        WebElement skillsSearchInput = driver
-                .findElement(By.xpath("//input[@name='training-filter-input']"));
-        skillsSearchInput.sendKeys("Java");
-
-        WebElement javaCheckbox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//label[contains(.,'Java')]//span")));
-        javaCheckbox.click();
-
-        WebElement collapseSkillsArrow = driver.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
-        collapseSkillsArrow.click();
-
-        List<WebElement> skillsSearchResultsList = driver.
-                findElements(By.xpath("//div[@class='training-list__container training-list__desktop']//a"));
-        skillsSearchResultsList.forEach(element-> Assert.assertTrue(element.getText().contains("JAVA"),
-                String.format("Element %s does not contain 'Java' word.",element)));
-        
-        WebElement closeIcon = driver.findElement(By.className("filter-field__input-item-close-icon"));
-        closeIcon.click();
-        
-        //Perform search for ‘DATA’ search term.
-
-        skillsSearchInput.sendKeys("Data");
-
-        WebElement dataCheckbox = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//label[contains(.,'Data')]//span")));
-        dataCheckbox.click();
-        //doesn't work, should be fixed later
-        WebElement dataCollapseSkillsArrow = driver.findElement(By.xpath("//div[@class='filter-toggle__arrow-icon arrow-icon-rotate']"));
-        dataCollapseSkillsArrow.click();
-
-        List<WebElement> dskillsSearchResultsList = driver.
-                findElements(By.xpath("//div[@class='training-list__container training-list__desktop']//a"));
-        dskillsSearchResultsList.forEach(element-> Assert.assertTrue(element.getText().contains("DATA"),
-                String.format("Element %s does not contain 'Data' word.",element)));
-        
-        
-        driver.quit();
-
-        //ADD OTHER STEPS
-    }
-	
-	@Test(enabled=true, description = "Verify ‘News’ Page and Materials section")
+@Test(enabled=true, description = "Verify ‘News’ Page and Materials section")
     public void verifyNewsPageAndMaterialsSection() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
         WebDriver driver =new ChromeDriver();
