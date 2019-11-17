@@ -60,8 +60,9 @@ public class HardCodedTests {
         driver.quit();
         
 	}
-	@Test(enabled = true, description = "Verify 'Trainings' search works properly with searching in 'Skills'", expectedExceptions = NoSuchElementException.class)
-	public void verifyTrainingsSearchWorksProperlyForSkills() {
+	
+  @Test(enabled = true, description = "Verify 'Trainings' search works properly with searching in 'Skills'", expectedExceptions = NoSuchElementException.class)
+   public void verifyTrainingsSearchWorksProperlyForSkills() {
 	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
 	WebDriver driver = new ChromeDriver();
 	WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -131,48 +132,58 @@ public class HardCodedTests {
 
 	}
 
+ @Test(enabled = true, description = "Verify ‘News’ Page and Materials section")
+  public void verifyNewsPageAndMaterialsSection() {
+	System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+	WebDriver driver = new ChromeDriver();
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	driver.get("https://training.by/#/Home");
 
-	
-@Test(enabled=true, description = "Verify ‘News’ Page and Materials section")
-    public void verifyNewsPageAndMaterialsSection() {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); 
-        WebDriver driver =new ChromeDriver();
-        WebDriverWait wait=new WebDriverWait(driver, 20);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://training.by/#/Home");
+	WebElement signInButton = driver.findElement(By.xpath("//p[@class='header-auth__signin']//span"));
+	signInButton.click();
+	WebElement mailInput = driver.findElement(By.id("signInEmail"));
+	mailInput.sendKeys("ivanhorintest@gmail.com");
+	WebElement passwordInput = driver.findElement(By.id("signInPassword"));
+	passwordInput.sendKeys("ivanhorintestPassword");
+	WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
+	signIn.click();
 
-        WebElement signInButton = driver.findElement(By.xpath("//p[@class='header-auth__signin']//span"));
-        signInButton.click();
-        WebElement mailInput = driver.findElement(By.id("signInEmail"));
-        mailInput.sendKeys("ivanhorintest@gmail.com");
-        WebElement passwordInput = driver.findElement(By.id("signInPassword"));
-        passwordInput.sendKeys("ivanhorintestPassword");
-        WebElement signIn = driver.findElement(By.className("popup-reg-sign-in-form__sign-in"));
-        signIn.click();
-        
-        WebElement news = driver.findElement(By.cssSelector("#header > div.links-row > div > nav > ul > li:nth-child(2) > a"));
-        news.click();
-        //I am going to refactor xpaths
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"root\"]/div[1]/div/ui-view/div/div[3]/section/div[1]/div/div[2]/news-categories/div/div/div[1]/span")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"root\"]/div[1]/div/ui-view/div/div[3]/section/div[1]/div/div[2]/news-categories/div/div/div[2]/span")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"root\"]/div[1]/div/ui-view/div/div[3]/section/div[1]/div/div[2]/news-categories/div/div/div[4]/span")));
-        WebElement materialsLink = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id=\"root\"]/div[1]/div/ui-view/div/div[3]/section/div[1]/div/div[2]/news-categories/div/div/div[3]/span")));
+	  WebElement news = driver
+			.findElement(By.xpath("//*[@class='main-nav__list']//*[@class='topNavItem news click hover']"));
+	news.click();
 
-        materialsLink.click();
-        //something wrong here, should be fixed later
-        List<WebElement> materialsSearchResultsList = driver.
-                findElements(By.xpath("//div[@class='news-page-item__title']//a"));
-        materialsSearchResultsList.forEach(element-> Assert.assertTrue(element.getText().contains("Materials")|| element.getText().contains("Useful"),
-                String.format("Element %s does not contain 'Materials' or 'Useful' word.",element)));
-        driver.quit();
-        
+	WebElement newsLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+			"//*[@class='tab-nav__item ng-scope active' ]//span[contains(text(), 'News')]")));
+	Assert.assertTrue(newsLink.isDisplayed());
+	WebElement successStoryLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+			"//*[@class='tab-nav__item ng-scope' ]//span[contains(text(), 'Success')]")));
+	Assert.assertTrue(successStoryLink.isDisplayed());
+	WebElement videosLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+			"//*[@class='tab-nav__item ng-scope' ]//span[contains(text(), 'Videos')]")));
+	Assert.assertTrue(videosLink.isDisplayed());
+	WebElement materialsLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+			"//*[@class='tab-nav__item ng-scope' ]//span[contains(text(), 'Materials')]")));
+	Assert.assertTrue(materialsLink.isDisplayed());
+	try {
+		WebElement materialsLink1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//*[@class='tab-nav__item ng-scope' ]//span[contains(text(), 'Materials')]")));
+		materialsLink1.click();
+	} catch (org.openqa.selenium.StaleElementReferenceException ex) {
+		driver.navigate().refresh();
+		WebElement materialsLink1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+				"//*[@class='tab-nav__item ng-scope' ]//span[contains(text(), 'Materials')]")));
+		materialsLink1.click();
 	}
-	
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='tab-nav__item ng-scope active' ]//span[contains(text(), 'Materials')]")));
+	List<WebElement> materialsSearchResultsList = driver.findElements(By.xpath("//div[@class='news-page-item__title']//a"));
+	materialsSearchResultsList.forEach(element -> Assert.assertTrue(
+			element.getText().toLowerCase().contains("materials") || element.getText().contains("Useful"),
+			String.format("Element %s does not contain 'Materials' or 'Useful' word.", element)));
+	driver.quit();
+}
+
     @Test(enabled=true, description = "Verify 'Trainings' search works properly with searching in 'Locations'")
     public void verifyTrainingsSearchWorksProperlyForLocations() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe"); //DOWNLOAD DRIVER !
