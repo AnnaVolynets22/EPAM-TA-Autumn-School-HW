@@ -1,0 +1,4 @@
+tests\DriverFactory.class
+pages\LoginPage.class
+pages\AbstractPage.class
+pages\HomePage.class
