@@ -1,24 +1,26 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
+import pages.HomePage;
 
 public class LoginPage extends AbstractPage {
-    
+	String baseURL = "https://training.by/#/Home";
+	
 	@FindBy(id = "signInEmail")
 	private WebElement userNameBy;
+	
 	@FindBy(id = "signInPassword")
 	private WebElement passwordBy;
+	
 	@FindBy(className = "popup-reg-sign-in-form__sign-in")
 	private WebElement loginButtonBy;
+	
 	@FindBy(xpath = "//div[@class='popup__error-message ng-binding']")
 	private WebElement errorMessage;
+	
 	@FindBy(className = "popup-title__close")
 	private WebElement closeLogin;
-	@FindBy(className = "user-info__name")
-	private WebElement userInfo;
-
 	
 	public WebElement getUserNameBy() {
 		return userNameBy;
@@ -56,10 +58,6 @@ public class LoginPage extends AbstractPage {
 		return errorMessage.isDisplayed();
 	}
 	
-	public boolean isUserInfoEmpty()
-	{
-		return userInfo.getText().isEmpty();
-	}
 	
 	public LoginPage login(String username, String password) {
 		// Enter Username(Email)
@@ -70,16 +68,16 @@ public class LoginPage extends AbstractPage {
 		click(loginButtonBy);
 		return this;
 	}
+	
+
 
 	public LoginPage verifyLogin(String expectedText) {
-		assertEquals(errorMessage, expectedText);
+		containText(errorMessage, expectedText);
 		return this;
 	}
 	
 	public void closeLoginPage() {
 		click(closeLogin);
-		
 	}
 	
-
 }

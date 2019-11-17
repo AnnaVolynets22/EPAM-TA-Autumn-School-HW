@@ -1,20 +1,23 @@
 package tests;
  
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterTest;
 
 import driverfactory.DriverFactory;
+import pages.HomePage;
+
  
 public class BaseTest {
  
-    @BeforeSuite
-    public void setup () {
-        
-    }
- 
+   /* @AfterTest
+    public void logOut () {
+        HomePage homePage = new HomePage();
+        if(!homePage.isUserInfoNameEmpty()) {
+        homePage.logOut();
+        }
+    }*/
+    
     @AfterSuite
     public void quit () {
         DriverFactory.getDriver().quit();

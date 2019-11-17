@@ -1,11 +1,8 @@
 package tests;
  
-import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import driverfactory.DriverFactory;
 import pages.HomePage;
 import pages.LoginPage;
  
@@ -19,7 +16,9 @@ public class LoginTests extends BaseTest {
         homePage.goToHomePage()
                 .goToLoginPage()
                 .login("ivanhorintest@gmail.com", "ivanhorintestPassword");
-        Assert.assertFalse(DriverFactory.getDriver().findElements(By.className("user-info__name")).isEmpty(), "Login fails.");
+        Assert.assertFalse(homePage.isUserInfoNameEmpty(), "Login fails.");
+        //cleanup
+        homePage.logOut();
     }
  
     @Test (priority = 0, enabled = true)
