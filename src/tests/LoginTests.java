@@ -5,26 +5,28 @@ import org.testng.annotations.Test;
 
 import pages.HomePage;
 import pages.LoginPage;
+import pagesBO.HomePageBO;
+import utility.Constants;
 
 public class LoginTests extends BaseTest {
 
 	@Test(enabled = true)
 	public void validLoginTest() {
 
-		HomePage homePage = new HomePage();
+		HomePageBO homePageBO = new HomePageBO();
 
-		Assert.assertFalse(homePage.isUserInfoNameEmpty(), "Login fails.");
+		Assert.assertFalse(homePageBO.isUserInfoNameEmpty(), "Login fails.");
 
 	}
 
-	@Test( enabled = true)
+	@Test(enabled = true)
 	public void invalidLoginTest() {
-        HomePage homePage = new HomePage();
-        
-		LoginPage loginPage = homePage.goToHomePage()
-		        .logOut()
-		        .goToLoginPage()
-		        .login("incorrect@gmail.com", "incorrect");
+		HomePageBO homePageBO = new HomePageBO();
+
+		homePageBO.goToHomePage();
+
+		LoginPage loginPage = homePageBO.logOut().goToLoginPage().login(Constants.INCORRECT_USERNAME,
+				Constants.INCORRECT_PASSWORD);
 
 		Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Login is successful with incorrect credentials.");
 		loginPage.closeLoginPage();

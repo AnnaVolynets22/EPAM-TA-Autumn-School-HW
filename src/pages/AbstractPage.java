@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import driverfactory.DriverFactory;
+import utility.Constants;
+
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 
@@ -15,7 +17,7 @@ public abstract class AbstractPage {
 	public AbstractPage() {
 		DriverFactory.initDriver("chrome");
 		PageFactory.initElements(DriverFactory.getDriver(), this);
-		wait = new WebDriverWait(DriverFactory.getDriver(), 10);
+		wait = new WebDriverWait(DriverFactory.getDriver(), Constants.EXP_WAIT_TIMEOUT);
 	}
 
 	public void click(WebElement element) {

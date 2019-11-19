@@ -3,6 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+      <class name="tests.TrainingListTests">
+        <methods>
+          <include name="quit"/>
+          <include name="verifyTrainingsSearchWorksProperlyForLocations"/>
+          <include name="login"/>
+          <include name="logOut"/>
+          <include name="verifyTrainingsSearchWorksProperlyForSkills"/>
+        </methods>
+      </class> <!-- tests.TrainingListTests -->
       <class name="tests.NewsTest">
         <methods>
           <include name="quit"/>

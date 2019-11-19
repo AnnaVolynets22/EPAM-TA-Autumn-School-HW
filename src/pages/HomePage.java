@@ -4,10 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import driverfactory.DriverFactory;
+import utility.Constants;
 
 public class HomePage extends AbstractPage {
-
-	String baseURL = "https://training.by/#/Home";
 
 	@FindBy(xpath = "//p[@class='header-auth__signin']//span")
 	private WebElement signInButton;
@@ -28,7 +27,7 @@ public class HomePage extends AbstractPage {
 	private WebElement userInfoName;
 
 	public HomePage goToHomePage() {
-		DriverFactory.getDriver().get(baseURL);
+		DriverFactory.getDriver().get(Constants.URL);
 		return this;
 	}
 
@@ -47,15 +46,20 @@ public class HomePage extends AbstractPage {
 		click(newsButton);
 		return new NewsPage();
 	}
-
-	public HomePage logOut() {
-		click(userInfoArrow);
-		// waitForVisibility(logOut);
-		click(logOut);
-		return new HomePage();
+    
+	public WebElement getUserInfoArrow() {
+		return userInfoArrow;
 	}
-
+	
+	public WebElement getLogOut() {
+		return logOut;
+	}
+    
 	public boolean isUserInfoNameEmpty() {
 		return userInfoName.getText().isEmpty();
+	}
+	
+	public WebElement getUserInfoName() {
+		return userInfoName;
 	}
 }

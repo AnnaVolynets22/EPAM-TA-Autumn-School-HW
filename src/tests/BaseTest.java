@@ -3,26 +3,26 @@ package tests;
 import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
 import driverfactory.DriverFactory;
-import pages.HomePage;
+import pagesBO.HomePageBO;
+import utility.Constants;
 
 public class BaseTest {
 
 	@BeforeMethod
 	public void login() {
-		HomePage homePage = new HomePage();
+		HomePageBO homePageBO = new HomePageBO();
 
-		homePage.goToHomePage().goToLoginPage().login("ivanhorintest@gmail.com", "ivanhorintestPassword");
+		homePageBO.goToHomePage().goToLoginPage().login(Constants.USERNAME, Constants.PASSWORD);
 	}
 	
 	@AfterMethod
 	public void logOut() {
-		HomePage homePage = new HomePage();
+		HomePageBO homePageBO = new HomePageBO();
         try {
-		homePage.logOut();
+		homePageBO.logOut();
         }catch(NoSuchElementException e)
         {
         	System.out.println("You are trying to log out but you are not login.");
