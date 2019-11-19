@@ -20,7 +20,8 @@ public class NewsTest extends BaseTest{
         Assert.assertTrue(newsPage.isMaterialsLinkDisplayed());
         Assert.assertTrue(newsPage.isVideosLinkDisplayed());
         
-        newsPage.clickMatrials();
+        newsPage.clickMatrials()
+                .waitForVisibility(newsPage.getMaterialsLinkActive());
         Assert.assertTrue(newsPage.isMaterialsLinkActiveDisplayed());
        // newsPage.getSearchResultTitleList().forEach(element-> System.out.println(element.getText()));
         newsPage.getSearchResultTitleList().forEach(element-> Assert.assertTrue(

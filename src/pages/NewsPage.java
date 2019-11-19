@@ -42,8 +42,11 @@ public class NewsPage extends AbstractPage{
 		return videosLink.isDisplayed();
 	}
 	
+	public WebElement getMaterialsLinkActive() {
+		return materialsLinkIsActive;
+	}
+	
 	public boolean isMaterialsLinkActiveDisplayed() {
-		waitForVisibility(materialsLinkIsActive);
 		return materialsLinkIsActive.isDisplayed();
 	}
 	

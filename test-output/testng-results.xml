@@ -2,72 +2,72 @@
 <testng-results skipped="0" failed="0" ignored="3" total="8" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="152888" started-at="2019-11-19T19:27:30Z" finished-at="2019-11-19T19:30:03Z">
+  <suite name="Default suite" duration-ms="167077" started-at="2019-11-19T19:45:57Z" finished-at="2019-11-19T19:48:45Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="152888" started-at="2019-11-19T19:27:30Z" finished-at="2019-11-19T19:30:03Z">
+    <test name="Default test" duration-ms="167077" started-at="2019-11-19T19:45:57Z" finished-at="2019-11-19T19:48:45Z">
       <class name="tests.LoginTests">
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="login" is-config="true" duration-ms="21842" started-at="2019-11-19T19:27:30Z" finished-at="2019-11-19T19:27:52Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="login" is-config="true" duration-ms="18823" started-at="2019-11-19T19:45:57Z" finished-at="2019-11-19T19:46:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="invalidLoginTest()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="invalidLoginTest" duration-ms="9858" started-at="2019-11-19T19:27:52Z" finished-at="2019-11-19T19:28:02Z">
+        <test-method status="PASS" signature="invalidLoginTest()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="invalidLoginTest" duration-ms="9214" started-at="2019-11-19T19:46:16Z" finished-at="2019-11-19T19:46:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- invalidLoginTest -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="logOut" is-config="true" duration-ms="20406" started-at="2019-11-19T19:28:02Z" finished-at="2019-11-19T19:28:22Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="logOut" is-config="true" duration-ms="21119" started-at="2019-11-19T19:46:26Z" finished-at="2019-11-19T19:46:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="login" is-config="true" duration-ms="2332" started-at="2019-11-19T19:28:22Z" finished-at="2019-11-19T19:28:25Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="login" is-config="true" duration-ms="2216" started-at="2019-11-19T19:46:47Z" finished-at="2019-11-19T19:46:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="validLoginTest" duration-ms="2443" started-at="2019-11-19T19:28:25Z" finished-at="2019-11-19T19:28:27Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="validLoginTest" duration-ms="2989" started-at="2019-11-19T19:46:49Z" finished-at="2019-11-19T19:46:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="logOut" is-config="true" duration-ms="2755" started-at="2019-11-19T19:28:27Z" finished-at="2019-11-19T19:28:30Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="logOut" is-config="true" duration-ms="4130" started-at="2019-11-19T19:46:52Z" finished-at="2019-11-19T19:46:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="quit" is-config="true" duration-ms="863" started-at="2019-11-19T19:30:04Z" finished-at="2019-11-19T19:30:05Z">
+        <test-method status="PASS" signature="quit()[pri:0, instance:tests.LoginTests@1b26f7b2]" name="quit" is-config="true" duration-ms="870" started-at="2019-11-19T19:48:46Z" finished-at="2019-11-19T19:48:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
       </class> <!-- tests.LoginTests -->
       <class name="tests.NewsTest">
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.NewsTest@491cc5c9]" name="login" is-config="true" duration-ms="3428" started-at="2019-11-19T19:28:30Z" finished-at="2019-11-19T19:28:33Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.NewsTest@491cc5c9]" name="login" is-config="true" duration-ms="4363" started-at="2019-11-19T19:46:56Z" finished-at="2019-11-19T19:47:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="verifyNewsPageAndMaterialsSection()[pri:0, instance:tests.NewsTest@491cc5c9]" name="verifyNewsPageAndMaterialsSection" duration-ms="5682" started-at="2019-11-19T19:28:33Z" description="Verify ‘News’ Page and Materials section" finished-at="2019-11-19T19:28:39Z">
+        <test-method status="PASS" signature="verifyNewsPageAndMaterialsSection()[pri:0, instance:tests.NewsTest@491cc5c9]" name="verifyNewsPageAndMaterialsSection" duration-ms="9804" started-at="2019-11-19T19:47:00Z" description="Verify ‘News’ Page and Materials section" finished-at="2019-11-19T19:47:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyNewsPageAndMaterialsSection -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.NewsTest@491cc5c9]" name="logOut" is-config="true" duration-ms="1775" started-at="2019-11-19T19:28:39Z" finished-at="2019-11-19T19:28:41Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.NewsTest@491cc5c9]" name="logOut" is-config="true" duration-ms="5196" started-at="2019-11-19T19:47:10Z" finished-at="2019-11-19T19:47:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
       </class> <!-- tests.NewsTest -->
       <class name="tests.TrainingListTests">
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="login" is-config="true" duration-ms="3171" started-at="2019-11-19T19:28:41Z" finished-at="2019-11-19T19:28:44Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="login" is-config="true" duration-ms="5389" started-at="2019-11-19T19:47:15Z" finished-at="2019-11-19T19:47:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="verifyTrainingsSearchWorksProperlyForLocations()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="verifyTrainingsSearchWorksProperlyForLocations" duration-ms="24615" started-at="2019-11-19T19:28:44Z" description="Verify &#039;Trainings&#039; search works properly with searching in &#039;Locations&#039;" finished-at="2019-11-19T19:29:08Z">
+        <test-method status="PASS" signature="verifyTrainingsSearchWorksProperlyForLocations()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="verifyTrainingsSearchWorksProperlyForLocations" duration-ms="25280" started-at="2019-11-19T19:47:21Z" description="Verify &#039;Trainings&#039; search works properly with searching in &#039;Locations&#039;" finished-at="2019-11-19T19:47:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyTrainingsSearchWorksProperlyForLocations -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="logOut" is-config="true" duration-ms="3349" started-at="2019-11-19T19:29:08Z" finished-at="2019-11-19T19:29:12Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="logOut" is-config="true" duration-ms="2273" started-at="2019-11-19T19:47:46Z" finished-at="2019-11-19T19:47:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
-        <test-method status="PASS" signature="login()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="login" is-config="true" duration-ms="2159" started-at="2019-11-19T19:29:12Z" finished-at="2019-11-19T19:29:14Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="login" is-config="true" duration-ms="4568" started-at="2019-11-19T19:47:48Z" finished-at="2019-11-19T19:47:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="verifyTrainingsSearchWorksProperlyForSkills()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="verifyTrainingsSearchWorksProperlyForSkills" duration-ms="46701" started-at="2019-11-19T19:29:14Z" description="Verify &#039;Trainings&#039; search works properly with searching in &#039;Skills&#039;" finished-at="2019-11-19T19:30:01Z">
+        <test-method status="PASS" signature="verifyTrainingsSearchWorksProperlyForSkills()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="verifyTrainingsSearchWorksProperlyForSkills" duration-ms="47960" started-at="2019-11-19T19:47:53Z" description="Verify &#039;Trainings&#039; search works properly with searching in &#039;Skills&#039;" finished-at="2019-11-19T19:48:41Z">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
               <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//label[contains(.,'pascal')]//span"}
@@ -76,8 +76,8 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
 System info: host: 'DESKTOP-MV8GVAF', ip: '192.168.0.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.97, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\Anna\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:59414}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 5f69eb1a110047c9a473f196c4ebeb92
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.97, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\Anna\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:59852}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 855953b4162a925af977658f763348ba
 *** Element info: {Using=xpath, value=//label[contains(.,'pascal')]//span}]]>
             </message>
             <full-stacktrace>
@@ -87,8 +87,8 @@ For documentation on this error, please visit: http://seleniumhq.org/exceptions/
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
 System info: host: 'DESKTOP-MV8GVAF', ip: '192.168.0.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.97, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\Anna\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:59414}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 5f69eb1a110047c9a473f196c4ebeb92
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 78.0.3904.97, chrome: {chromedriverVersion: 78.0.3904.70 (edb9c9f3de024..., userDataDir: C:\Users\Anna\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:59852}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 855953b4162a925af977658f763348ba
 *** Element info: {Using=xpath, value=//label[contains(.,'pascal')]//span}
 at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
@@ -139,7 +139,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyTrainingsSearchWorksProperlyForSkills -->
-        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="logOut" is-config="true" duration-ms="2264" started-at="2019-11-19T19:30:01Z" finished-at="2019-11-19T19:30:03Z">
+        <test-method status="PASS" signature="logOut()[pri:0, instance:tests.TrainingListTests@74ad1f1f]" name="logOut" is-config="true" duration-ms="3503" started-at="2019-11-19T19:48:41Z" finished-at="2019-11-19T19:48:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logOut -->
