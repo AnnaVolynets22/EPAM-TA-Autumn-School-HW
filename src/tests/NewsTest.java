@@ -7,15 +7,11 @@ import pages.NewsPage;
 
 public class NewsTest extends BaseTest{
 	
-    @Test (priority = 2, enabled = true, description = "Verify ‘News’ Page and Materials section")
+    @Test (enabled = true, description = "Verify ‘News’ Page and Materials section")
     public void verifyNewsPageAndMaterialsSection() {
  
         HomePage homePage = new HomePage();
- 
-        homePage.goToHomePage()
-                .goToLoginPage()
-                .login("ivanhorintest@gmail.com", "ivanhorintestPassword");
-        
+      
         Assert.assertFalse(homePage.isUserInfoNameEmpty(), "Login fails.");
 
         NewsPage newsPage = homePage.goToNewsPage();
@@ -30,8 +26,7 @@ public class NewsTest extends BaseTest{
         newsPage.getSearchResultTitleList().forEach(element-> Assert.assertTrue(
 				element.getText().toLowerCase().contains("materials") || element.getText().contains("Useful"),
 				String.format("Element %s does not contain 'Materials' or 'Useful' word.", element))); 
-        //cleanup
-        homePage.logOut();                
+                 
     }
 
 }

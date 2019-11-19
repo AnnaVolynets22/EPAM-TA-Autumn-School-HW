@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,17 +10,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 
 public abstract class AbstractPage {
-	public WebDriver driver;
 	public WebDriverWait wait;
 
 	public AbstractPage() {
-		driver = DriverFactory.initDriver("chrome");
-		PageFactory.initElements(driver, this);
-		wait = new WebDriverWait(driver, 10);
+		DriverFactory.initDriver("chrome");
+		PageFactory.initElements(DriverFactory.getDriver(), this);
+		wait = new WebDriverWait(DriverFactory.getDriver(), 10);
 	}
 
 	public void click(WebElement element) {
-		waitForElementToBeClickable(element);
 		element.click();
 	}
 
@@ -43,6 +42,19 @@ public abstract class AbstractPage {
 	
 	public void waitForElementToBeClickable(WebElement element) {
 	    wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
+	public void staleHandle(WebElement element) {
+		
+		for(int i=0;i<5;i++) {
+			try {
+				click(element);
+				break;
+			} catch (StaleElementReferenceException e) {
+				
+				System.out.println("Trying to recover from stale reference exeption");
+			}
+		}
 	}
 	
 }

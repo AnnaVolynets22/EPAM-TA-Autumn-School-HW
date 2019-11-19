@@ -1,15 +1,6 @@
 package tests;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,13 +9,9 @@ import pages.TrainingListPage;
 
 public class TrainingListTests extends BaseTest {
 
-	@Test(enabled = true, priority = 2, description = "Verify 'Trainings' search works properly with searching in 'Skills'", expectedExceptions = NoSuchElementException.class)
+	@Test(enabled = true,  description = "Verify 'Trainings' search works properly with searching in 'Skills'", expectedExceptions = NoSuchElementException.class)
 	public void verifyTrainingsSearchWorksProperlyForSkills() {
         HomePage homePage = new HomePage();
-        
-        homePage.goToHomePage()
-                .goToLoginPage()
-                .login("ivanhorintest@gmail.com", "ivanhorintestPassword");
         
         Assert.assertFalse(homePage.isUserInfoNameEmpty(), "Login fails.");
         TrainingListPage trainingListPage = homePage.goToTrainingListPage();
@@ -64,19 +51,13 @@ public class TrainingListTests extends BaseTest {
 
 		Assert.assertFalse(trainingListPage.getPascalCheckbox().isDisplayed());
 		
-        //cleanup
-        homePage.logOut();
 	}
 	
-	@Test(enabled = true, priority = 2, description = "Verify 'Trainings' search works properly with searching in 'Locations'")
+	@Test(enabled = true, description = "Verify 'Trainings' search works properly with searching in 'Locations'")
 	public void verifyTrainingsSearchWorksProperlyForLocations() {
 
         HomePage homePage = new HomePage();
- 
-        homePage.goToHomePage()
-                .goToLoginPage()
-                .login("ivanhorintest@gmail.com", "ivanhorintestPassword");
-        
+          
         Assert.assertFalse(homePage.isUserInfoNameEmpty(), "Login fails.");
         TrainingListPage trainingListPage = homePage.goToTrainingListPage();
 
@@ -88,8 +69,6 @@ public class TrainingListTests extends BaseTest {
 
 		trainingListPage.getSkillsByLocationSearchResultsList().forEach(element -> Assert.assertEquals(element.getText(), "Lviv, Ukraine"));
         
-        //cleanup
-        homePage.logOut();
 	}
 
 }

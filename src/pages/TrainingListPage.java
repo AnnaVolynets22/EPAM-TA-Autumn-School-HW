@@ -65,17 +65,9 @@ public class TrainingListPage extends AbstractPage {
 		return bySkillsButton;
 	}
 
-	public void setBySkillsButton(WebElement bySkillsButton) {
-		this.bySkillsButton = bySkillsButton;
-	}
-
 	public WebElement getSkillsSearchInput() {
 		waitForVisibility(skillsSearchInput);
 		return skillsSearchInput;
-	}
-
-	public void setSkillsSearchInput(WebElement skillsSearchInput) {
-		this.skillsSearchInput = skillsSearchInput;
 	}
 
 	public WebElement getJavaCheckbox() {
@@ -83,25 +75,13 @@ public class TrainingListPage extends AbstractPage {
 		return javaCheckbox;
 	}
 
-	public void setJavaCheckbox(WebElement javaCheckbox) {
-		this.javaCheckbox = javaCheckbox;
-	}
-
 	public WebElement getCollapseSkillsArrow() {
 		waitForVisibility(collapseSkillsArrow);
 		return collapseSkillsArrow;
 	}
 
-	public void setCollapseSkillsArrow(WebElement collapseSkillsArrow) {
-		this.collapseSkillsArrow = collapseSkillsArrow;
-	}
-
 	public List<WebElement> getSkillsSearchResultsList() {
 		return skillsSearchResultsList;
-	}
-
-	public void setSkillsSearchResultsList(List<WebElement> skillsSearchResultsList) {
-		this.skillsSearchResultsList = skillsSearchResultsList;
 	}
 
 	public WebElement getCloseIcon() {
@@ -109,67 +89,35 @@ public class TrainingListPage extends AbstractPage {
 		return closeIcon;
 	}
 
-	public void setCloseIcon(WebElement closeIcon) {
-		this.closeIcon = closeIcon;
-	}
-
 	public WebElement getDataCheckbox() {
 		waitForVisibility(dataCheckbox);
 		return dataCheckbox;
-	}
-
-	public void setDataCheckbox(WebElement dataCheckbox) {
-		this.dataCheckbox = dataCheckbox;
 	}
 
 	public List<WebElement> getDskillsSearchResultsList() {
 		return dskillsSearchResultsList;
 	}
 
-	public void setDskillsSearchResultsList(List<WebElement> dskillsSearchResultsList) {
-		this.dskillsSearchResultsList = dskillsSearchResultsList;
-	}
-
 	public WebElement getPascalCheckbox() {
 		return pascalCheckbox;
-	}
-
-	public void setPascalCheckbox(WebElement pascalCheckbox) {
-		this.pascalCheckbox = pascalCheckbox;
 	}
 
 	public WebElement getByLocationButton() {
 		return byLocationButton;
 	}
 
-	public void setByLocationButton(WebElement byLocationButton) {
-		this.byLocationButton = byLocationButton;
-	}
-
 	public WebElement getCountry() {
 		return country;
-	}
-
-	public void setCountry(WebElement country) {
-		this.country = country;
 	}
 
 	public WebElement getLvivCheckbox() {
 		return lvivCheckbox;
 	}
 
-	public void setLvivCheckbox(WebElement lvivCheckbox) {
-		this.lvivCheckbox = lvivCheckbox;
-	}
-
 	public List<WebElement> getSkillsByLocationSearchResultsList() {
 		return skillsByLocationSearchResultsList;
 	}
 
-	public void setSkillsByLocationSearchResultsList(List<WebElement> skillsByLocationSearchResultsList) {
-		this.skillsByLocationSearchResultsList = skillsByLocationSearchResultsList;
-	}
 
-	
 	
 }
