@@ -1,18 +1,16 @@
 package ua.com.epam;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeMethod;
 import ua.com.epam.core.rest.RestClient;
 import ua.com.epam.service.CleanUpService;
 import ua.com.epam.utils.DataFactory;
-import ua.com.epam.utils.helpers.LocalDateAdapter;
-
-import java.time.LocalDate;
+import ua.com.epam.validation.Validator;
 
 public class BaseTest {
-    //to parse JSON String to needed model (with correct date parsing possibility)
-    protected Gson g = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).create();
+
+    protected static Logger log = Logger.getLogger(BaseTest.class);
+    protected Validator validator = new Validator();
 
     protected RestClient client = new RestClient();
     protected DataFactory testData = new DataFactory();

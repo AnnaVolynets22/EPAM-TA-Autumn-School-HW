@@ -1,55 +1,145 @@
 package ua.com.epam;
 
-import org.json.JSONArray;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ua.com.epam.entity.author.Author;
+import ua.com.epam.entity.author.nested.Birth;
+import ua.com.epam.service.AuthorService;
+import ua.com.epam.validation.AuthorValidator;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import static ua.com.epam.config.URI.GET_ALL_AUTHORS_ARR;
-import static ua.com.epam.config.URI.POST_AUTHOR_SINGLE_OBJ;
 
-@Test(description = "")
+@Test(description = "Test of CRUD operations for Author entity")
 public class CRUDAuthorTest extends BaseTest {
     private Author expAuthor = testData.authors().getRandomOne();
     private List<Author> authorList = testData.authors().getDefaultAuthors();
+    private AuthorService authorService = new AuthorService(client);
+
 
     @BeforeMethod
     public void sendAuthors() {
-        for(Author a : authorList) {
-            client.post(POST_AUTHOR_SINGLE_OBJ, a);
-        }
+        authorService.sendAuthors(authorList);
     }
 
-    @Test(description = "post single Author obj")
+    @Test(description = "Post single Author obj")
     public void postAuthor() {
-        client.post(POST_AUTHOR_SINGLE_OBJ, expAuthor);
+        log.info("Performing postAuthor test");
+        clean.authors();
 
-        int statusCode = client.getResponse().getStatusCode();
-        String body = client.getResponse().getBody();
+        authorService.postAuthor(expAuthor);
 
-        Author actAuthor = g.fromJson(body, Author.class);
+        validator.getAuthorValidator(authorService.getResponse()).validatePostAuthorSuccess(expAuthor);
 
-        Assert.assertEquals(statusCode, 201);
-        Assert.assertEquals(expAuthor, actAuthor);
     }
 
-    @Test
+    @Test(description = "Post single Author obj which already exist.")
+    public void postAuthorFailed() {
+        log.info("Performing postAuthorFailed test");
+
+        authorService.postAuthor(expAuthor);
+
+        validator.getAuthorValidator(authorService.getResponse()).assertStatusCodeConflict();
+
+    }
+
+    @Test(description = "Get single Author obj")
+    public void getSingleAuthor(){
+        log.info("Performing getSingleAuthor test");
+
+        authorService.getAuthor(expAuthor.getAuthorId().toString());
+
+        validator.getAuthorValidator(authorService.getResponse()).validateGetAuthorSuccess(expAuthor);
+
+    }
+
+    @Test(description = "Get single Author obj which doesn't exist")
+    public void getSingleAuthorFailed(){
+        log.info("Performing getSingleAuthorFailed test");
+
+        authorService.getAuthor("6666666666");
+
+        validator.getAuthorValidator(authorService.getResponse()).assertStatusCodeNotFound();
+
+    }
+
+    @Test( description = "Get author by first name.")
+    public void getAuthorsByFirstname() {
+        log.info("Performing getAuthorsByFirstname test");
+
+        Map<String,String> paramMap = new HashMap<String, String>(){{
+            put("query", expAuthor.getAuthorName().getFirst());
+            put("orderType","asc");
+            put("sortBy","authorId");
+        }};
+
+        authorService.getAuthorsWithSearch(paramMap);
+
+        validator.getAuthorValidator(authorService.getResponse())
+                .validateGetAuthorByFieldSuccess("authorName.first", expAuthor.getAuthorName().getFirst());
+    }
+
+    @Test( description = "Get author by surname.")
+    public void getAuthorsBySurname() {
+        log.info("Performing getAuthorsSurname test");
+
+        Map<String,String> paramMap = new HashMap<String, String>(){{
+            put("query", expAuthor.getAuthorName().getSecond());
+        }};
+
+        authorService.getAuthorsWithSearch(paramMap);
+
+        validator.getAuthorValidator(authorService.getResponse())
+                .validateGetAuthorByFieldSuccess("authorName.second", expAuthor.getAuthorName().getSecond());
+    }
+
+    @Test( description = "Get different authors.")
     public void getDifferentAuthors() {
-        String params = "?orderType=asc&page=1&pagination=true&size=5&sortBy=authorId";
+        log.info("Performing getDifferentAuthors test");
+        Map<String,String> paramMap = new HashMap<String, String>(){{
+            put("orderType","asc");
+            put("page","2");
+            put("pagination","true");
+            put("size","5");
+            put("sortBy","authorId");
+        }};
 
-        client.get(GET_ALL_AUTHORS_ARR + params);
-        int statusCode = client.getResponse().getStatusCode();
-        String body = client.getResponse().getBody();
+        authorService.getAuthors(paramMap);
 
-        JSONArray authorsArr = new JSONArray(body);
-        int len = authorsArr.length();
+        validator.getAuthorValidator(authorService.getResponse())
+                .validateGetAuthorsWithPaginationAndSortSuccess("asc", 5);
+}
 
-        Assert.assertEquals(statusCode, 200);
-        Assert.assertEquals(len, 5);
+    @Test(description = "Delete single Author obj")
+    public void deleteAuthor(){
+        log.info("Performing deleteAuthor test");
+        authorService.deleteAuthor(expAuthor);
+
+        validator.getAuthorValidator(authorService.getResponse()).assertStatusCodeDeleteSuccess();
+    }
+
+    @Test(description = "Delete twice the same Author obj")
+    public void deleteTwiceSameAuthor(){
+        log.info("Performing deleteTwiceSameAuthor test");
+        authorService.deleteAuthor(expAuthor);
+        validator.getAuthorValidator(authorService.getResponse()).assertStatusCodeDeleteSuccess();
+
+        authorService.deleteAuthor(expAuthor);
+        validator.getAuthorValidator(authorService.getResponse()).assertStatusCodeNotFound();
+    }
+
+    @Test(description = "Update single Author obj")
+    public void updateAuthor(){
+        log.info("Performing updateAuthor test");
+        expAuthor.setNationality("Ukraine");
+
+        authorService.updateAuthor(expAuthor);
+
+        validator.getAuthorValidator(authorService.getResponse()).validateUpdateAuthorSuccess(expAuthor);
+
     }
 
     @AfterMethod
