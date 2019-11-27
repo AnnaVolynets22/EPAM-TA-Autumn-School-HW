@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="C:/TAF/src/test/java/ua/com/epam/CRUDGenreTest.java">
+        <classes>
+            <class name="ua.com.epam.CRUDGenreTest">
+                <methods>
+                    <include name="postGenre"/>
+                    <include name="getSingleGenreFailed"/>
+                    <include name="getSingleGenre"/>
+                    <include name="getGenreByName"/>
+                    <include name="updateGenre"/>
+                    <include name="deleteGenre"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
